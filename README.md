@@ -84,7 +84,7 @@ User Query
 | **Re-ranking Model** | `BAAI/bge-reranker-v2-m3` (CrossEncoder) |
 | **Vector Database** | [Qdrant](https://qdrant.tech/) (local on-disk mode) |
 | **LLM** | `Qwen2.5:3B` via [Ollama](https://ollama.com/) |
-| **PDF Parsing** | [pypdf](https://pypdf.readthedocs.io/) + [PyMuPDF](https://pymupdf.readthedocs.io/) |
+| **PDF Parsing** | [pypdf](https://pypdf.readthedocs.io/) |
 | **Validation** | [Pydantic v2](https://docs.pydantic.dev/) + pydantic-settings |
 | **Frontend** | Vanilla HTML + CSS + JavaScript |
 | **Testing** | pytest (15 test files covering all service layers) |
@@ -144,7 +144,6 @@ pdf-rag-chatbot/
 │   ├── test_embedding.py
 │   ├── test_ingestion.py
 │   ├── test_llm.py
-│   ├── test_pdf.py
 │   ├── test_pdf_loader.py
 │   ├── test_pipeline.py
 │   ├── test_prompt.py
