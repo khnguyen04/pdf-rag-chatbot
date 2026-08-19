@@ -1,5 +1,5 @@
 # Virtual environment
-.venv/
+venv/
 
 # Python
 __pycache__/
@@ -13,8 +13,8 @@ __pycache__/
 .idea/
 
 # Data
-data/uploads/*
-data/processed/*
+data/uploads/
+data/qdrant/
 
 # Testing
 .pytest_cache/
@@ -22,6 +22,3 @@ data/processed/*
 # OS
 .DS_Store
 Thumbs.db
-
-# Other
-tree.md

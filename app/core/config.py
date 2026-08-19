@@ -1,8 +1,11 @@
 from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
-    app_name: str = "PDF RAG Chatbot"
-    app_version: str = "0.1.0"
+    app_name: str
+    app_version: str
+    llm_model: str
+    vector_size: int
+    collection_name: str
 
     class Config:
         env_file = ".env"

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RAG Chat</title>
+
+    <link rel="stylesheet" href="../static/css/rag.css">
+</head>
+
+<body>
+
+    <div class="rag-container">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+
+            <div class="sidebar-header">
+                <h2>RAG Assistant</h2>
+                <p>Upload tài liệu và đặt câu hỏi</p>
+            </div>
+
+            <!-- Upload -->
+            <div class="upload-section">
+
+                <h3>📄 Upload PDF</h3>
+
+                <label for="pdf-file" class="file-label">
+                    Chọn file PDF
+                </label>
+
+                <input
+                    type="file"
+                    id="pdf-file"
+                    accept=".pdf"
+                    hidden
+                >
+
+                <div id="file-name" class="file-name">
+                    Chưa chọn file
+                </div>
+
+                <button
+                    id="upload-btn"
+                    class="upload-btn"
+                    type="button"
+                >
+                    Upload
+                </button>
+
+                <div id="upload-status"></div>
+
+            </div>
+
+            <!-- Current document -->
+            <div class="document-section">
+
+                <h3>📚 Document</h3>
+
+                <div id="current-document" class="document-card">
+                    Chưa có tài liệu
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- Chat -->
+        <main class="chat-container">
+
+            <!-- Header -->
+            <header class="chat-header">
+
+                <div>
+                    <h2>💬 Chat with your document</h2>
+
+                    <span id="chat-status">
+                        Ready
+                    </span>
+                </div>
+
+            </header>
+
+
+            <!-- Messages -->
+            <div
+                id="chat-messages"
+                class="chat-messages"
+            >
+
+                <div class="message assistant">
+
+                    <div class="message-avatar">
+                        AI
+                    </div>
+
+                    <div class="message-content">
+                        Xin chào! Hãy upload một file PDF
+                        và đặt câu hỏi về tài liệu.
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- Input -->
+            <div class="chat-input-container">
+
+                <textarea
+                    id="question-input"
+                    placeholder="Nhập câu hỏi về tài liệu..."
+                    rows="1"
+                ></textarea>
+
+                <button
+                    id="send-btn"
+                    class="send-btn"
+                    type="button"
+                >
+                    Send
+                </button>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+    <!-- JavaScript -->
+    <script src="/static/js/rag.js"></script>
+
+</body>
+</html>
