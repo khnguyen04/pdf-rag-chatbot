@@ -5,7 +5,7 @@ class LLMService:
 
     def __init__(
         self,
-        model: str = "qwen2.5:3b"
+        model: str
     ):
         self.model = model
 

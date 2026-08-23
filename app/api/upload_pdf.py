@@ -1,13 +1,13 @@
 from pathlib import Path
 
-from fastapi import APIRouter, UploadFile, File, HTTPException
+from fastapi import APIRouter, UploadFile, File, HTTPException, Depends
 
+from app.dependencies import get_ingestion_service
 from app.services.ingestion_service import IngestionService
-from app.loaders.pdf_loader import PDFLoader
-from app.services.chunking_service import ChunkingService
-from app.services.embedding_service import EmbeddingService
-from app.vector_store.qdrant_store import QdrantStore
 
+from app.core.logger import get_logger
+
+logger = get_logger(__name__)
 
 router = APIRouter(
     prefix="/api",
@@ -24,7 +24,8 @@ UPLOAD_DIR.mkdir(
 
 @router.post("/upload_pdf")
 async def upload_pdf(
-    file: UploadFile = File(...)
+    file: UploadFile = File(...),
+    ingestion_service: IngestionService = Depends(get_ingestion_service)
 ):
     if file.content_type != "application/pdf":
         raise HTTPException(
@@ -45,25 +46,9 @@ async def upload_pdf(
     file_path.write_bytes(content)
     document_id = Path(file.filename).stem
 
-    pdf_loader = PDFLoader()
-
-    chunking_service = ChunkingService(
-        chunk_size=1000,
-        chunk_overlap=200
-    )
-
-    embedding_service = EmbeddingService()
-
-    vector_store = QdrantStore(
-        collection_name="pdf_chunks",
-        vector_size=1024
-    )
-
-    ingestion_service = IngestionService(
-        pdf_loader=pdf_loader,
-        chunking_service=chunking_service,
-        embedding_service=embedding_service,
-        vector_store=vector_store
+    logger.info(
+        "Starting PDF ingestion: %s",
+        file.filename
     )
 
     result = ingestion_service.ingest(
@@ -71,7 +56,10 @@ async def upload_pdf(
         document_id=document_id
     )
 
-    vector_store.close()
+    logger.info(
+        "PDF ingestion completed: %s",
+        file.filename
+    )
 
     return {
         "message": "PDF uploaded and indexed successfully.",

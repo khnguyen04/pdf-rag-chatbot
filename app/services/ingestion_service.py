@@ -45,8 +45,6 @@ class IngestionService:
             embedded_chunks,
             document_id=document_id
         )
-
-        self.vector_store.close()
         
         return {
             "document_id": document_id,

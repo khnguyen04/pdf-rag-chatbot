@@ -1,15 +1,13 @@
 from app.services.chunking_service import ChunkingService
+from app.loaders.pdf_loader import PDFLoader
 
-pages = [
-    {
-        "page": 1,
-        "text": """
-        Sinh viên muốn nhận học bổng phải đáp ứng
-        các điều kiện sau. GPA phải đạt tối thiểu 3.2.
-        Sinh viên không được vi phạm kỷ luật.
-        """
-    }
-]
+
+loader = PDFLoader()
+
+pages = loader.load(
+    "data/uploads/QuyDinh2026_Truong.pdf"
+)
+
 
 chunking_service = ChunkingService(
     chunk_size=100,

@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends
 from pydantic import BaseModel
 
-from app.dependencies import create_rag_service
+from app.dependencies import get_rag_service
 from app.services.rag_service import RAGService
 
 class ChatRequest(BaseModel):
@@ -26,7 +26,7 @@ router = APIRouter(
 @router.post("/chat", response_model=ChatResponse)
 async def chat(
     request: ChatRequest,
-    rag_service: RAGService = Depends(create_rag_service)
+    rag_service: RAGService = Depends(get_rag_service)
 ):
 
     return rag_service.ask(

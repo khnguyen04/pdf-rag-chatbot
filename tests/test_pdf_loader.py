@@ -4,7 +4,7 @@ from app.loaders.pdf_loader import PDFLoader
 loader = PDFLoader()
 
 pages = loader.load(
-    "data/uploads/scholarship.pdf"
+    "data/uploads/QuyDinh2026_Truong.pdf"
 )
 
 for page in pages:
