@@ -87,8 +87,8 @@ User Query
 | **PDF Parsing** | [pypdf](https://pypdf.readthedocs.io/) |
 | **Validation** | [Pydantic v2](https://docs.pydantic.dev/) + pydantic-settings |
 | **Frontend** | Vanilla HTML + CSS + JavaScript |
-| **Testing** | pytest (15 test files covering all service layers) |
-| **Config** | python-dotenv (`.env` based) |
+| **Testing** | Test files covering all service layers |
+| **Config** | pydantic-settings + .env |
 
 ---
 

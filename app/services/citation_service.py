@@ -1,4 +1,3 @@
-from dns import enum
 class CitationService:
     
     def build_sources(

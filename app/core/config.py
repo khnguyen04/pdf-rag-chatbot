@@ -1,4 +1,3 @@
-from torch import embedding
 from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
