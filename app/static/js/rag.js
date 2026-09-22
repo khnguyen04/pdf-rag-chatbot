@@ -180,8 +180,7 @@ async function sendQuestion() {
                 credentials: "include",
 
                 body: JSON.stringify({
-                    // document_id: currentDocumentId,
-                    document_id: "TieuDiemThang_1_2026_Truong",
+                    document_id: currentDocumentId,
                     question: question
                 })
             }

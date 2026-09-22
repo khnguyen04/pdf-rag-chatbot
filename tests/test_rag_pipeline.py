@@ -8,44 +8,46 @@ from app.services.reranking_service import RerankingService
 
 from app.vector_store.qdrant_store import QdrantStore
 
-# pages = [
-#     {
-#         "page": 1,
-#         "text": """
-#         Sinh viên muốn nhận học bổng phải đáp ứng
-#         các điều kiện sau.
+from app.core.config import settings
 
-#         GPA phải đạt tối thiểu 3.2.
+pages = [
+    {
+        "page": 1,
+        "text": """
+        Sinh viên muốn nhận học bổng phải đáp ứng
+        các điều kiện sau.
 
-#         Sinh viên không được vi phạm kỷ luật.
-#         """
-#     }
-# ]
+        GPA phải đạt tối thiểu 3.2.
 
-# chunking_service = ChunkingService(
-#     chunk_size=200,
-#     chunk_overlap=30
-# )
+        Sinh viên không được vi phạm kỷ luật.
+        """
+    }
+]
 
-# chunks = chunking_service.chunk_pages(
-#     pages
-# )
+chunking_service = ChunkingService(
+    chunk_size=200,
+    chunk_overlap=30
+)
 
-embedding_service = EmbeddingService()
+chunks = chunking_service.chunk_pages(
+    pages
+)
 
-# embedded_chunks = embedding_service.embed_chunks(
-#     chunks
-# )
+embedding_service = EmbeddingService(settings.embedding_model)
+
+embedded_chunks = embedding_service.embed_chunks(
+    chunks
+)
 
 vector_store = QdrantStore(
     collection_name="pdf_chunks",
     vector_size=1024
 )
 
-# vector_store.add_chunks(
-#     embedded_chunks,
-#     document_id="scholarship"
-# )
+vector_store.add_chunks(
+    embedded_chunks,
+    document_id="scholarship"
+)
 
 retrieval_service = RetrievalService(
     embedding_service=embedding_service,

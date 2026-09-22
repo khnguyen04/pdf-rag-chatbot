@@ -4,17 +4,20 @@ from qdrant_client import QdrantClient
 from qdrant_client.models import Distance, VectorParams, PointStruct
 from qdrant_client.models import Filter, FieldCondition, MatchValue
 
+from app.core.config import settings
+
 class QdrantStore:
 
     def __init__(
         self,
-        collection_name: str,
-        vector_size: int
+        collection_name: str = settings.collection_name,
+        vector_size: int = settings.vector_size,
+        path: str = settings.qdrant_path
     ):
         self.collection_name = collection_name
 
         self.client = QdrantClient(
-            path="./data/qdrant"
+            path=path
         )
 
         self._create_collection(vector_size)

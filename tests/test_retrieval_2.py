@@ -3,6 +3,8 @@ from app.services.embedding_service import EmbeddingService
 from app.services.retrieval_service import RetrievalService
 from app.vector_store.qdrant_store import QdrantStore
 
+from app.core.config import settings
+
 pages_a = [
     {
         "page": 1,
@@ -35,7 +37,7 @@ chunking_service = ChunkingService(
     chunk_overlap=20
 )
 
-embedding_service = EmbeddingService()
+embedding_service = EmbeddingService(settings.embedding_model)
 
 vector_store = QdrantStore(
     collection_name="pdf_chunks",

@@ -4,6 +4,7 @@ from app.services.embedding_service import EmbeddingService
 from app.services.ingestion_service import IngestionService
 from app.vector_store.qdrant_store import QdrantStore
 
+from app.core.config import settings
 
 pdf_loader = PDFLoader()
 
@@ -12,7 +13,7 @@ chunking_service = ChunkingService(
     chunk_overlap=200
 )
 
-embedding_service = EmbeddingService()
+embedding_service = EmbeddingService(settings.embedding_model)
 
 vector_store = QdrantStore(
     collection_name="pdf_chunks",
@@ -29,8 +30,8 @@ ingestion_service = IngestionService(
 
 
 result = ingestion_service.ingest(
-    file_path="data/uploads/scholarship.pdf",
-    document_id="scholarship"
+    file_path="data/uploads/QuyDinh2026_Truong.pdf",
+    document_id="QuyDinh2026_Truong"
 )
 
 print(result)

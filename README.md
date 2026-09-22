@@ -138,7 +138,7 @@ pdf-rag-chatbot/
 │   ├── uploads/                   # Saved uploaded PDF files
 │   └── qdrant/                    # Qdrant local on-disk storage
 │
-├── tests/                         # 15 pytest test files
+├── tests/                         # Test files
 │   ├── test_chunking.py
 │   ├── test_context.py
 │   ├── test_embedding.py

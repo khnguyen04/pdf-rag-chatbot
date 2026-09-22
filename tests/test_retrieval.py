@@ -3,6 +3,8 @@ from app.services.embedding_service import EmbeddingService
 from app.services.retrieval_service import RetrievalService
 from app.vector_store.qdrant_store import QdrantStore
 
+from app.core.config import settings
+
 pages = [
     {
         "page": 1,
@@ -30,7 +32,7 @@ chunks = chunking_service.chunk_pages(
 
 
 # Step 4: Embedding
-embedding_service = EmbeddingService()
+embedding_service = EmbeddingService(settings.embedding_model)
 
 embedded_chunks = embedding_service.embed_chunks(
     chunks

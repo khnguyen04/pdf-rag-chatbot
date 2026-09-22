@@ -11,6 +11,7 @@ class Settings(BaseSettings):
     chunk_overlap: int
     embedding_model: str
     reranking_model: str
+    qdrant_path: str
 
     class Config:
         env_file = ".env"

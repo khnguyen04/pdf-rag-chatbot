@@ -1,8 +1,7 @@
 from app.services.embedding_service import EmbeddingService
+from app.core.config import settings
 
-
-embedding_service = EmbeddingService()
-
+embedding_service = EmbeddingService(settings.embedding_model)
 
 text = "Sinh viên phải đạt GPA tối thiểu 3.2"
 

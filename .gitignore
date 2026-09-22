@@ -22,3 +22,9 @@ data/qdrant/
 # OS
 .DS_Store
 Thumbs.db
+
+*.json
+evaluations/
+
+Dockerfile
+requirements.docker.txt

@@ -1,4 +1,3 @@
-from pyexpat import model
 from ollama import chat 
 
 class LLMService:
