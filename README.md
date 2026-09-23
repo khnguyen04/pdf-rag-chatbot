@@ -310,10 +310,6 @@ Ask a question about an indexed document.
 
 ## 🧪 Running Tests
 
-```bash
-pytest tests/ -v
-```
-
 Test coverage spans all service components:
 
 | Test File | What It Tests |
